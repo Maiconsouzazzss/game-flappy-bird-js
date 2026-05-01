@@ -81,3 +81,32 @@ body {
     font-size: 70px;
     z-index: 100;
 }
+
+.game-message {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 200;
+    font-family: Pixel;
+    font-size: 100px;
+    color: white;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+}
+
+#btn-start {
+    padding: 15px 30px;
+    font-family: Pixel;
+    font-size: 30px;
+    cursor: pointer;
+    background-color: #f1c40f;
+    border: 4px solid #000;
+}
+
+#btn-start:hover {
+    background-color: #f39c12;
+}

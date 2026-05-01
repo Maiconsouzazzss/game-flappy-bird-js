@@ -135,20 +135,20 @@ function collided(bird, barriers) {
 
 function FlappyBird() {
     let points = 0
-
     const gameArea = document.querySelector('[tp-flappy]')
     const height = gameArea.clientHeight
     const width = gameArea.clientWidth
+    const overlay = document.getElementById('message-overlay')
 
     const score = new Score()
     const barriers = new Barriers(height, width, 200, 400, 
         () => score.updatePoints(++points))
-
     const bird = new Bird(height)
 
+    // Limpa a área antes de começar
+    gameArea.innerHTML = '<div class="game-message" id="message-overlay"></div>'
     gameArea.appendChild(score.element)
     gameArea.appendChild(bird.element)
-
     barriers.pairs.forEach(pair => gameArea.appendChild(pair.element))
 
     this.start = () => {
@@ -158,9 +158,42 @@ function FlappyBird() {
 
             if (collided(bird, barriers)) {
                 clearInterval(timer)
+                gameOver()
             }
         }, 20)
     }
+
+    const gameOver = () => {
+        const msg = document.getElementById('message-overlay')
+        msg.style.display = 'flex'
+        msg.innerHTML = `
+            <div style="text-align: center">
+                <p>GAME OVER</p>
+                <button onclick="prepararJogo()">Reiniciar</button>
+            </div>
+        `
+    }
 }
 
-new FlappyBird().start()
+//Contagem 3, 2, 1
+function prepararJogo() {
+    const overlay = document.getElementById('message-overlay')
+    overlay.style.display = 'flex'
+    let count = 3
+    
+    overlay.innerHTML = count
+
+    const countdown = setInterval(() => {
+        count--
+        if (count > 0) {
+            overlay.innerHTML = count
+        } else {
+            clearInterval(countdown)
+            overlay.style.display = 'none' // Esconde mensagem
+            new FlappyBird().start() // Iniciar jogo
+        }
+    }, 800) 
+}
+
+// Início do sistema ao carregar a página
+document.getElementById('btn-start').onclick = prepararJogo
