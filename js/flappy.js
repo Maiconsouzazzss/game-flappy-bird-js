@@ -176,12 +176,13 @@ function FlappyBird() {
 }
 
 //Contagem 3, 2, 1
-function prepararJogo() {
+function prepareGame() {
     const overlay = document.getElementById('message-overlay')
-    overlay.style.display = 'flex'
     let count = 3
     
+    // Remove botão e mostra o número
     overlay.innerHTML = count
+    overlay.style.display = 'flex'
 
     const countdown = setInterval(() => {
         count--
@@ -189,11 +190,28 @@ function prepararJogo() {
             overlay.innerHTML = count
         } else {
             clearInterval(countdown)
-            overlay.style.display = 'none' // Esconde mensagem
-            new FlappyBird().start() // Iniciar jogo
+            overlay.style.display = 'none'
+            new FlappyBird().start()
         }
-    }, 800) 
+    }, 800)
 }
 
-// Início do sistema ao carregar a página
-document.getElementById('btn-start').onclick = prepararJogo
+// Enter ou Clique na tela
+window.addEventListener('keydown', e => {
+    if (e.key === 'Enter' && document.getElementById('message-overlay').style.display !== 'none') {
+        prepareGame()
+    }
+})
+
+document.querySelector('[tp-flappy]').onclick = () => {
+    if (document.getElementById('message-overlay').style.display !== 'none') {
+        prepareGame()
+    }
+}
+
+// Botão inicial
+document.getElementById('btn-start').onclick = e => {
+    e.stopPropagation()
+    prepareGame()
+}
+

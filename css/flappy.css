@@ -96,17 +96,19 @@ body {
     font-size: 100px;
     color: white;
     text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+    pointer-events: none; /* Deixa o clique passar */
 }
 
-#btn-start {
+#btn-start, .game-message button {
     padding: 15px 30px;
     font-family: Pixel;
     font-size: 30px;
     cursor: pointer;
     background-color: #f1c40f;
     border: 4px solid #000;
+    pointer-events: auto; /* botão seja clicável */
 }
 
-#btn-start:hover {
+#btn-start:hover, .game-message button:hover {
     background-color: #f39c12;
 }
