@@ -1,3 +1,6 @@
+
+let isGameRunning = false // Controle
+
 function newElement(tagName, className) {
     const elem = document.createElement(tagName)
     elem.className = className
@@ -163,7 +166,10 @@ function FlappyBird() {
         }, 20)
     }
 
+
+    
     const gameOver = () => {
+        isGameRunning = false
         const msg = document.getElementById('message-overlay')
         msg.style.display = 'flex'
         msg.innerHTML = `
@@ -177,6 +183,8 @@ function FlappyBird() {
 
 //Contagem 3, 2, 1
 function prepareGame() {
+    if (isGameRunning) return // SAIR, se rodando
+    isGameRunning = true
     const overlay = document.getElementById('message-overlay')
     let count = 3
     
