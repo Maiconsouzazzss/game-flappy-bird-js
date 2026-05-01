@@ -1,4 +1,4 @@
-\# Flappy Bird JS - Versão Adaptativa
+\## Flappy Bird JS - Versão Adaptativa
 
 
 
@@ -58,7 +58,9 @@ A proposta foi aplicar conceitos avançados de manipulação do DOM e lógica de
 
 1\. Clone o repositório:
 
-&#x20;  ```bash
+&#x20;  
+
+```bash
 
 &#x20;  git clone \[https://github.com/Maiconsouzazzss/game-flappy-bird-js.git](https://github.com/Maiconsouzazzss/game-flappy-bird-js.git)
 
