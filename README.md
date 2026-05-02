@@ -26,13 +26,13 @@ A proposta foi aplicar conceitos avançados de manipulação do DOM e lógica de
 
 \### Versão Desktop
 
-!\[Desktop View](imagens/print-desktop.png)
+![Desktop View](imagens/print-desktop.png)
 
 
 
 \### Versão Mobile (Modo Paisagem)
 
-!\[Mobile View](imagens/print-mobile.png)
+![Mobile View](imagens/print-mobile.png)
 
 
 
