@@ -26,13 +26,13 @@ A proposta foi aplicar conceitos avançados de manipulação do DOM e lógica de
 
 \### Versão Desktop
 
-!\[Desktop View](./imagens/print-desktop.png)
+!\[Desktop View](imagens/print-desktop.png)
 
 
 
 \### Versão Mobile (Modo Paisagem)
 
-!\[Mobile View](./imagens/print-mobile.png)
+!\[Mobile View](imagens/print-mobile.png)
 
 
 
@@ -48,7 +48,7 @@ A proposta foi aplicar conceitos avançados de manipulação do DOM e lógica de
 
 \## 🛠️ Tecnologias Utilizadas
 
-\- HTML5, CSS3 e JavaScript (Vanilla).
+\- HTML5, CSS3 e JavaScript.
 
 
 
@@ -60,7 +60,7 @@ A proposta foi aplicar conceitos avançados de manipulação do DOM e lógica de
 
 &#x20;  
 
-```bash
+```bash https://github.com/Maiconsouzazzss/game-flappy-bird-js.git
 
 &#x20;  git clone \[https://github.com/Maiconsouzazzss/game-flappy-bird-js.git](https://github.com/Maiconsouzazzss/game-flappy-bird-js.git)
 
