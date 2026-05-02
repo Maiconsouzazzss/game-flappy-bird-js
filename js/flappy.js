@@ -31,7 +31,7 @@ function BarrierPair(height, gap, x) {
     this.randomizeGap = () => {
         const topHeight = Math.random() * (height - gap)
         const bottomHeight = height - gap - topHeight
-        
+
         this.top.setHeight(topHeight)
         this.bottom.setHeight(bottomHeight)
     }
@@ -67,7 +67,7 @@ function Barriers(height, width, gap, space, notifyPoint) {
             const middle = width / 2
             const crossedMiddle = pair.getX() + offset >= middle
                 && pair.getX() < middle
-            
+
             if (crossedMiddle) notifyPoint()
         })
     }
@@ -82,8 +82,28 @@ function Bird(gameHeight) {
     this.getY = () => parseInt(this.element.style.bottom.split('px')[0])
     this.setY = y => this.element.style.bottom = `${y}px`
 
-    window.onkeydown = e => flying = true
-    window.onkeyup = e => flying = false
+   window.onkeydown = e => flying = true
+window.onkeyup = e => flying = false
+
+// evita/click duplo
+let isTouch = false
+
+window.addEventListener('touchstart', () => {
+    isTouch = true
+    flying = true
+})
+
+window.addEventListener('touchend', () => {
+    flying = false
+})
+
+window.addEventListener('click', () => {
+    if (!isTouch) {
+        flying = true
+        setTimeout(() => flying = false, 100)
+    }
+    isTouch = false
+})
 
     this.animate = () => {
         const newY = this.getY() + (flying ? 8 : -5)
@@ -127,8 +147,8 @@ function collided(bird, barriers) {
         if (!collided) {
             const top = pair.top.element
             const bottom = pair.bottom.element
-    
-            collided = areOverlapping(bird.element, top) 
+
+            collided = areOverlapping(bird.element, top)
                 || areOverlapping(bird.element, bottom)
         }
     })
@@ -144,7 +164,7 @@ function FlappyBird() {
     const overlay = document.getElementById('message-overlay')
 
     const score = new Score()
-    const barriers = new Barriers(height, width, 200, 400, 
+    const barriers = new Barriers(height, width, 200, 400,
         () => score.updatePoints(++points))
     const bird = new Bird(height)
 
@@ -167,7 +187,7 @@ function FlappyBird() {
     }
 
 
-    
+
     const gameOver = () => {
         isGameRunning = false
         const msg = document.getElementById('message-overlay')
@@ -187,7 +207,7 @@ function prepareGame() {
     isGameRunning = true
     const overlay = document.getElementById('message-overlay')
     let count = 3
-    
+
     // Remove botão e mostra o número
     overlay.innerHTML = count
     overlay.style.display = 'flex'
